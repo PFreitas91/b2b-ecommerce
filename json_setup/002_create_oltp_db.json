@@ -1,0 +1,9 @@
+[
+    {
+    "name":"create_oltp_db",
+    "upstream":"create_dw_operator",
+    "database":"master",
+    "query":"""CREATE DATABASE B2B_DB
+    """
+    }
+]

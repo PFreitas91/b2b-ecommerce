@@ -1,0 +1,16 @@
+[
+    {
+    "name":"create_view_sales_by_month_last_year",
+	"upstream":"create_view_most_popular_products_in_top_country_operator",
+    "database":"TT_DW",
+    "query":"""create view v_sales_by_month_last_year as
+	--All sales of B2B platform displayed monthly for the last year
+	select d.TheMonthName, d.TheYear, sum(quantity*UnitPrice) as sales_value, count(distinct OrderId) no_orders 
+	from [TT_DW].dbo.fact_orders o
+		join [TT_DW].dbo.dim_date d 
+			on d.sk_date = o.OrderDate
+	where d.TheYear = year(getdate())-1
+	group by d.TheMonthName, d.TheYear
+    """
+    }
+]

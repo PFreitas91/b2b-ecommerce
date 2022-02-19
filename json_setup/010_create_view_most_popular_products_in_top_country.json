@@ -1,0 +1,20 @@
+[
+    {
+    "name":"create_view_most_popular_products_in_top_country",
+	"upstream":"load_oltp_orderlines_operator",
+    "database":"TT_DW",
+    "query":"""create view v_most_popular_products_in_top_country as
+	select top 100 ProductID, sum(quantity) qty_ordered from [TT_DW].dbo.fact_orders o
+		join [TT_DW].dbo.dim_customer c 
+			on c.sk_customer = o.sk_customer
+		join (
+			select top 1 c.Country, sum(no_visits) visits from [TT_DW].dbo.fact_webvisits v
+			join [TT_DW].dbo.dim_customer c on c.sk_customer = v.sk_customer
+			group by Country
+			order by sum(no_visits) desc
+			) a on a.Country = c.Country
+	group by ProductID
+	order by sum(quantity) desc
+    """
+    }
+]

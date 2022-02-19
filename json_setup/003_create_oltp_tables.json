@@ -1,0 +1,70 @@
+[
+    {
+    "name":"create_oltp_tables",
+	"upstream":"create_oltp_db_operator",
+    "database":"master",
+    "query":"""
+	CREATE TABLE [B2B_DB].dbo.Customers (
+		CustomerID int not null
+		, FullName varchar(80) not null
+		, BirthDate varchar(20) not null
+		, Document varchar(80) not null
+		, CUIT int
+		, Country varchar(80)
+		, username varchar(80)
+		);
+	
+	
+	CREATE TABLE [B2B_DB].dbo.Orders (
+		OrderId int not null
+		, CustomerID int not null
+		, OrderDate varchar(20) not null
+		, LastEditedWhen varchar(20) 
+		);
+	
+	
+	CREATE TABLE [B2B_DB].dbo.Orderlines (
+		OrderLineId int not null
+		, OrderId int not null
+		, ProductID int not null
+		, Quantity int
+		, UnitPrice numeric(26,2)
+		, LastEditedWhen varchar(20) 
+		, SupplierCUIT int
+		); 
+	
+	CREATE TABLE [B2B_DB].dbo.Products (
+		ProductId int not null
+		, ProductName varchar(250)
+		, CUIT int not null
+		, UnitPrice numeric(26,2)
+		, Size varchar(80)
+		, ValidFrom varchar(20) not null
+		, ValidTo varchar(20) 
+		);
+	
+	CREATE TABLE [B2B_DB].dbo.Companies (
+		CUIT int not null
+		, CompanyName varchar(80)
+		, CompanyType varchar(80)
+		);
+	
+	CREATE TABLE [B2B_DB].dbo.stg_marketinglead (
+		FirstName varchar(80) not null
+		, LastName varchar(80)
+		, fullname varchar(80)
+		, Document varchar(80)
+		, BirthDate date
+		, campaign varchar(80)
+		);
+	
+	
+	CREATE TABLE [B2B_DB].dbo.stg_weblogs ( 
+		remote_host varchar(80)
+		,  remote_user varchar(80)
+		,  time_received_utc_isoformat varchar(80)
+		,  request_header_user_agent varchar(500)
+		)
+    """
+    }
+]

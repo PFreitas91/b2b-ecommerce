@@ -1,0 +1,14 @@
+[
+    {
+    "name":"create_most_popular_devices",
+	"upstream":"create_view_sales_by_month_last_year_operator",
+    "database":"TT_DW",
+    "query":"""create view v_most_popular_devices as
+	--What are the most popular used devices for B2B clients (top 5)
+	select top 5 device, sum(no_visits) visits
+	from [TT_DW].dbo.fact_webvisits
+	group by device
+	order by sum(no_visits) desc
+    """
+    }
+]

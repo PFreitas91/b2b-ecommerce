@@ -1,0 +1,12 @@
+[
+    {
+        "conn_id":"mssql_tt",
+        "conn_type": "mssql",
+        "host": "toptal",
+        "login": "sa",
+        "password": "YourStrong@Passw0rd",
+        "schema": "",
+        "port": 1433,
+        "extra": ""
+    }
+]

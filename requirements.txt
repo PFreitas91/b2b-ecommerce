@@ -1,0 +1,8 @@
+pendulum
+pandas
+numpy
+pymssql
+pyodbc
+docker-utils
+odfpy
+apache_log_parser

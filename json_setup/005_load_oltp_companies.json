@@ -1,0 +1,34 @@
+[
+    {
+    "name":"load_oltp_companies",
+	"upstream":"create_dw_tables_operator",
+    "database":"master",
+    "query":"""insert into [B2B_DB].dbo.Companies values (1,'A Datum Corporation','Supplier');
+	insert into [B2B_DB].dbo.Companies values (2,'Contoso, Ltd.','Supplier');
+	insert into [B2B_DB].dbo.Companies values (3,'Consolidated Messenger','Supplier');
+	insert into [B2B_DB].dbo.Companies values (4,'Fabrikam, Inc.','Supplier');
+	insert into [B2B_DB].dbo.Companies values (5,'Graphic Design Institute','Supplier');
+	insert into [B2B_DB].dbo.Companies values (6,'Humongous Insurance','Supplier');
+	insert into [B2B_DB].dbo.Companies values (7,'Litware, Inc.','Supplier');
+	insert into [B2B_DB].dbo.Companies values (8,'Lucerne Publishing','Supplier');
+	insert into [B2B_DB].dbo.Companies values (9,'Nod Publishers','Supplier');
+	insert into [B2B_DB].dbo.Companies values (10,'Northwind Electric Cars','Supplier');
+	insert into [B2B_DB].dbo.Companies values (11,'Trey Research','Supplier');
+	insert into [B2B_DB].dbo.Companies values (12,'The Phone Company','Supplier');
+	insert into [B2B_DB].dbo.Companies values (13,'Woodgrove Bank','Supplier');
+	insert into [B2B_DB].dbo.Companies values (14,'Zatuu','Customer');
+	insert into [B2B_DB].dbo.Companies values (15,'Vyrt','Customer');
+	insert into [B2B_DB].dbo.Companies values (16,'HDGR','Customer');
+	insert into [B2B_DB].dbo.Companies values (17,'Ikiu','Customer');
+	insert into [B2B_DB].dbo.Companies values (18,'Vaqeoa','Customer');
+	insert into [B2B_DB].dbo.Companies values (19,'Mevuo','Customer');
+	insert into [B2B_DB].dbo.Companies values (20,'Jaxoo','Customer');
+	insert into [B2B_DB].dbo.Companies values (21,'Zuvud','Customer');
+	insert into [B2B_DB].dbo.Companies values (22,'Luvuch','Customer');
+	insert into [B2B_DB].dbo.Companies values (23,'Zaxoa','Customer');
+	insert into [B2B_DB].dbo.Companies values (24,'Laqeo','Customer');
+	insert into [B2B_DB].dbo.Companies values (25,'Boqia','Customer');
+	insert into [B2B_DB].dbo.Companies values (26,'Edoqo','Customer');
+    """
+    }
+]

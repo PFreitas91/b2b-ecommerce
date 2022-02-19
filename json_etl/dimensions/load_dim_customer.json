@@ -1,0 +1,19 @@
+[
+    {
+    "name":"load_dim_customer",
+    "downstream":"dim_marketinglead_operator",
+    "query":"""insert into [TT_DW].dbo.dim_customer
+    select c.sk_company
+        , p.CustomerID
+        , p.FullName
+        , convert(date,p.BirthDate,103) BirthDate
+        , p.Document
+        , c.CUIT
+        , p.Country
+        , p.username
+    from [B2B_DB].dbo.Customers p
+    join [TT_DW].dbo.dim_companies c on p.CUIT = c.CUIT
+    left join [TT_DW].dbo.dim_customer dw on p.FullName = dw.FullName and convert(date,p.BirthDate,103)=dw.BirthDate and p.Document=dw.Document
+    where dw.FullName is null"""
+    }
+]

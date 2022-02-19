@@ -1,0 +1,20 @@
+[
+    {
+    "name":"load_dim_products",
+    "downstream":"load_facts",
+    "query":"""insert into [TT_DW].dbo.dim_products
+    select c.sk_company as sk_suppliercompany
+        , p.ProductId
+        , p.ProductName
+        , c.CUIT as SupplierCUIT
+        , p.UnitPrice
+        , p.Size
+        , cast(convert(varchar,convert(date,p.ValidFrom,103),112) as int) as ValidFrom
+        , cast(convert(varchar,convert(date,p.ValidTo,103),112) as int) as ValidTo
+    from [B2B_DB].dbo.Products p
+    join [TT_DW].dbo.dim_companies c on p.CUIT = c.CUIT
+    left join [TT_DW].dbo.dim_products dw on p.ProductId = dw.ProductId and p.CUIT=dw.SupplierCUIT
+    where dw.ProductId is null
+    ;"""
+    }
+]
